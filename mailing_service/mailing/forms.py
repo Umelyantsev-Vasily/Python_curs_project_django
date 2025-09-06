@@ -76,3 +76,5 @@ class MailingForm(forms.ModelForm):
             instance.save()
             self.save_m2m()
         return instance
+
+
