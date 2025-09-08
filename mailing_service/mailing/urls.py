@@ -14,7 +14,7 @@ from .views import (
     MailingListView,
     MailingCreateView,
     MailingUpdateView,
-    MailingDeleteView,
+    MailingDeleteView, start_mailing,
 )
 
 app_name = "mailing"
@@ -42,6 +42,6 @@ urlpatterns = [
     ),
     # Попытки
     path("attempts/", MailingAttemptListView.as_view(), name="attempt_list"),
-    path("mailings/<int:pk>/start/", views.start_mailing, name="mailing_start"),
+    path('mailing/<int:pk>/start/', start_mailing, name='start_mailing'),
     path("cache-test/", views.cache_test_view, name="cache_test"),
 ]

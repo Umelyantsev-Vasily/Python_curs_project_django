@@ -8,6 +8,7 @@ from django.shortcuts import get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.views.decorators.cache import cache_page
+from .services import send_mailing
 
 
 @cache_page(60)  # Кэшировать на 1 минуту
@@ -252,8 +253,10 @@ def start_mailing(request, pk):
         messages.error(request, "У вас нет прав для запуска этой рассылки")
         return redirect("mailing:mailing_list")
 
-    mailing.status = "started"
+    send_mailing(mailing)
+    mailing.status = "completed"
     mailing.save()
+
     messages.success(request, f'Рассылка "{mailing.message.subject}" запущена!')
 
     return redirect("mailing:mailing_list")

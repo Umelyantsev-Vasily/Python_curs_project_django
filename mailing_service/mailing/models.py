@@ -85,6 +85,13 @@ class MailingAttempt(models.Model):
         verbose_name="Рассылка",
         related_name="attempts",
     )
+    client = models.ForeignKey(
+        Client,
+        on_delete=models.CASCADE,
+        verbose_name="Клиент",
+        null=True,  # временно
+        blank=True
+    )
 
     class Meta:
         verbose_name = "Попытка рассылки"

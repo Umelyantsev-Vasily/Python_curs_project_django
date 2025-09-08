@@ -35,8 +35,9 @@
                     <a href="{% url 'mailing:mailing_edit' mailing.pk %}" class="btn btn-sm btn-outline-secondary">Изменить</a>
                     <a href="{% url 'mailing:mailing_delete' mailing.pk %}" class="btn btn-sm btn-outline-danger">Удалить</a>
 
-                    {% if mailing.status != 'started' %}
-                    <form action="{% url 'mailing:mailing_start' mailing.pk %}" method="post" class="d-inline">
+                    <!-- ИЗМЕНИТЕ УСЛОВИЕ ЗДЕСЬ -->
+                    {% if mailing.status != 'completed' %}
+                    <form action="{% url 'mailing:start_mailing' mailing.pk %}" method="post" class="d-inline">
                         {% csrf_token %}
                         <button type="submit" class="btn btn-sm btn-success">Запустить</button>
                     </form>
