@@ -141,6 +141,7 @@ python manage.py load_groups
 
 - Отключение рассылок
 
+
 ## ✅ **Проверка:**
 
 ```bash
